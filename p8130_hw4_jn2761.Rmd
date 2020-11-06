@@ -1,0 +1,67 @@
+---
+title: "p8130_hw4_jn2761"
+author: "jiaying Ning"
+date: "11/6/2020"
+output: pdf_document
+---
+
+```{r}
+rm(list=ls())
+
+```
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(arsenal)
+```
+
+### Problem 2
+
+##### part a
+
+```{r}
+#Import Data 
+Knee_df=
+   read.csv("./data/Knee.csv")
+```
+
+```{r}
+summary(Knee_df)
+```
+
+From the current descriptive statistics, it seems like lower physical status are associate with longer time (days) required in physical therapy until successful rehabilitation on average. This trend is observable across all descriptive data (min, median,mean,max) Those who are below average physical status have the higher value in min, median, mean, and max for time (days) required in physical therapy when comparing to the other group.
+
+##### part b
+
+* Hypothesis
+  + H0 = Levels of Physical status are not associated with days required in physical therapy until successful rehabilitation.
+  + H1 = Levels of Physical status are associated with days required in physical therapy until successful rehabilitation.
+  
+* Anova Table/Test Statistics
+  
+```{r}
+
+#Tidy the data frame
+Knee_Anova=
+Knee_df %>%
+  pivot_longer(
+    Below:Above,
+    names_to = "Physical_Status", 
+    values_to = "Days_in_Physical_Therapy") 
+
+#perform anova test
+teststats = aov(Days_in_Physical_Therapy ~ Physical_Status, data = Knee_Anova)
+summary(teststats)
+```
+
+* Critical Value
+
+```{r}
+F_critic=qf(.99, df1=2, df2=22)
+F_critic
+```
+
+F_critic(5.719022) < F_stats(19.28)
+
+* Decision: Since out F-stats is larger than F critical value with alpha=0.01, we thus reject the null and conclude that 
