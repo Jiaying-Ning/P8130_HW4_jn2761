@@ -2,7 +2,10 @@
 title: "p8130_hw4_jn2761"
 author: "jiaying Ning"
 date: "11/6/2020"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 ---
 
 ```{r}
@@ -18,7 +21,7 @@ library(arsenal)
 
 ### Problem 2
 
-##### part a
+##### Part A
 
 ```{r}
 #Import Data 
@@ -32,7 +35,7 @@ summary(Knee_df)
 
 From the current descriptive statistics, it seems like lower physical status are associate with longer time (days) required in physical therapy until successful rehabilitation on average. This trend is observable across all descriptive data (min, median,mean,max) Those who are below average physical status have the higher value in min, median, mean, and max for time (days) required in physical therapy when comparing to the other group.
 
-##### part b
+##### Part B
 
 * Hypothesis
   + H0 = Levels of Physical status are not associated with days required in physical therapy until successful rehabilitation.
@@ -65,3 +68,59 @@ F_critic
 F_critic(5.719022) < F_stats(19.28)
 
 * Decision: Since out F-stats is larger than F critical value with alpha=0.01, we thus reject the null and conclude that 
+
+##### Part C
+
+###### Pairwise t test with bonferroni Adjustment
+
+```{r}
+pairwise.t.test(Knee_Anova$Days_in_Physical_Therapy,Knee_Anova$Physical_Status,p.adj = "bonferroni")
+```
+
+
+* Conclusion:Here we observed significant pvalues on pairs Average-Above and Below-Above,espeically below-above, no significant pvalues is observed on Below-Average. Therefore from this result, we can say that pairs Average-Above and Below-Above are significant different.
+
+###### Tukey Adjustment
+
+```{r}
+TukeyHSD(teststats)
+```
+* Conclusion:significant p-values is observed on pairs Average-Above and Below-Above, no significant pvalues is observed on Below-Average. Therefore from this result, we can say that pairs Average-Above and Below-Above are significant different.
+
+###### Dunnett
+
+
+I can't load the DescTools package, so I will calculate Dunnet online
+[here is the website I used](https://rdrr.io/cran/DescTools/man/DunnettTest.html)
+
+```
+Below <- c(29,42,38,40,43,40,30,42) # normal subjects
+Average <- c(30,35,39,28,31,31,29,35,39,33)      # with obstructive airway disease
+Above <- c(26,32,21,20,23,22,21) # with asbestosis
+
+DunnettTest(list(Below, Average, Above))
+```
+
+
+```
+Dunnett's test for comparing several treatments with a control :  
+    95% family-wise confidence level
+
+$`1`
+         diff    lwr.ci      upr.ci    pval    
+2-1  -5.00000 -10.08718  0.08717688  0.0543 .  
+3-1 -14.42857 -19.97914 -8.87800640 6.9e-06 ***
+
+---
+
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+* Conclusion: As we can see, there is a significant p-value for between above and below average physicial status group. So we can say this pair is significantly different, but we can't say the same for pairs between average and below average.
+
+##### Part D
+
+Overall, all three test shows a significant p-value for above-below pairs, Tukey and bonferroni also observed a significant p-value for Average-Above. We did not observe this result on the last test becasue we set below average group as our control, so we are only comparing the difference between below group and other two group.
+
+By looking at the significance level, even thought the difference is small, Tukey seems to be less conservative since it generate smaller p-value than bonferroni. DunnettTest seems to be inappropraite in this case because we are not only interested in the comparison between below group and other group, but we are also interested in the difference between above and average group which is also shown to be significant as well according to Tukey and bonferroni.
+

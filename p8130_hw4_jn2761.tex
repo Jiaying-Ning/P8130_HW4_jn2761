@@ -1,0 +1,352 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={p8130\_hw4\_jn2761},
+            pdfauthor={jiaying Ning},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{p8130\_hw4\_jn2761}
+\author{jiaying Ning}
+\date{11/6/2020}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rm}\NormalTok{(}\DataTypeTok{list=}\KeywordTok{ls}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages ---------------------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(arsenal)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{problem-2}{%
+\subsubsection{Problem 2}\label{problem-2}}
+
+\hypertarget{part-a}{%
+\subparagraph{Part A}\label{part-a}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Import Data }
+\NormalTok{Knee_df=}
+\StringTok{   }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"./data/Knee.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(Knee_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Below       Average          Above      
+##  Min.   :29   Min.   :28.00   Min.   :20.00  
+##  1st Qu.:36   1st Qu.:30.25   1st Qu.:21.00  
+##  Median :40   Median :32.00   Median :22.00  
+##  Mean   :38   Mean   :33.00   Mean   :23.57  
+##  3rd Qu.:42   3rd Qu.:35.00   3rd Qu.:24.50  
+##  Max.   :43   Max.   :39.00   Max.   :32.00  
+##  NA's   :2                    NA's   :3
+\end{verbatim}
+
+From the current descriptive statistics, it seems like lower physical
+status are associate with longer time (days) required in physical
+therapy until successful rehabilitation on average. This trend is
+observable across all descriptive data (min, median,mean,max) Those who
+are below average physical status have the higher value in min, median,
+mean, and max for time (days) required in physical therapy when
+comparing to the other group.
+
+\hypertarget{part-b}{%
+\subparagraph{Part B}\label{part-b}}
+
+\begin{itemize}
+\tightlist
+\item
+  Hypothesis
+
+  \begin{itemize}
+  \tightlist
+  \item
+    H0 = Levels of Physical status are not associated with days required
+    in physical therapy until successful rehabilitation.
+  \item
+    H1 = Levels of Physical status are associated with days required in
+    physical therapy until successful rehabilitation.
+  \end{itemize}
+\item
+  Anova Table/Test Statistics
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Tidy the data frame}
+\NormalTok{Knee_Anova=}
+\NormalTok{Knee_df }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}
+\NormalTok{    Below}\OperatorTok{:}\NormalTok{Above,}
+    \DataTypeTok{names_to =} \StringTok{"Physical_Status"}\NormalTok{, }
+    \DataTypeTok{values_to =} \StringTok{"Days_in_Physical_Therapy"}\NormalTok{) }
+
+\CommentTok{#perform anova test}
+\NormalTok{teststats =}\StringTok{ }\KeywordTok{aov}\NormalTok{(Days_in_Physical_Therapy }\OperatorTok{~}\StringTok{ }\NormalTok{Physical_Status, }\DataTypeTok{data =}\NormalTok{ Knee_Anova)}
+\KeywordTok{summary}\NormalTok{(teststats)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Df Sum Sq Mean Sq F value   Pr(>F)    
+## Physical_Status  2  795.2   397.6   19.28 1.45e-05 ***
+## Residuals       22  453.7    20.6                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 5 observations deleted due to missingness
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Critical Value
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F_critic=}\KeywordTok{qf}\NormalTok{(.}\DecValTok{99}\NormalTok{, }\DataTypeTok{df1=}\DecValTok{2}\NormalTok{, }\DataTypeTok{df2=}\DecValTok{22}\NormalTok{)}
+\NormalTok{F_critic}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.719022
+\end{verbatim}
+
+F\_critic(5.719022) \textless{} F\_stats(19.28)
+
+\begin{itemize}
+\tightlist
+\item
+  Decision: Since out F-stats is larger than F critical value with
+  alpha=0.01, we thus reject the null and conclude that
+\end{itemize}
+
+\hypertarget{part-c}{%
+\subparagraph{Part C}\label{part-c}}
+
+Pairwise t test with bonferroni Adjustment
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairwise.t.test}\NormalTok{(Knee_Anova}\OperatorTok{$}\NormalTok{Days_in_Physical_Therapy,Knee_Anova}\OperatorTok{$}\NormalTok{Physical_Status,}\DataTypeTok{p.adj =} \StringTok{"bonferroni"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  Knee_Anova$Days_in_Physical_Therapy and Knee_Anova$Physical_Status 
+## 
+##         Above   Average
+## Average 0.0011  -      
+## Below   1.1e-05 0.0898 
+## 
+## P value adjustment method: bonferroni
+\end{verbatim}
+
+Tukey Adjustment
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{TukeyHSD}\NormalTok{(teststats)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = Days_in_Physical_Therapy ~ Physical_Status, data = Knee_Anova)
+## 
+## $Physical_Status
+##                    diff        lwr      upr     p adj
+## Average-Above  9.428571  3.8066356 15.05051 0.0010053
+## Below-Above   14.428571  8.5243579 20.33278 0.0000102
+## Below-Average  5.000000 -0.4113011 10.41130 0.0736833
+\end{verbatim}
+
+Dunnett
+
+I can't load the DescTools package, so I will calculate Dunnet by hand
+
+Dunnett critical value(alpha=0.05,3,25) = 2.35 （From online Dunnet
+critical value table) Dunnett = T\_critical\emph{sqrt(2}MS/n)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Dunnett =}\StringTok{ }\FloatTok{2.35} \OperatorTok{*}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\FloatTok{20.6}\OperatorTok{/}\DecValTok{3}\NormalTok{) }
+
+\NormalTok{Dunnett}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.70875
+\end{verbatim}
+
+we are setting `below average' as reference
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average_below =}\StringTok{ }\DecValTok{33-38}
+\NormalTok{Above_below =}\StringTok{ }\FloatTok{23.57}\DecValTok{-38}
+\NormalTok{average_below}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Above_below}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -14.43
+\end{verbatim}
+
+Since Above and below difference exceed the magnitude of Dunnett's
+distance of 8.70875, so they are the significant pairs.
+
+\end{document}
